@@ -7,22 +7,21 @@ tokenizer = AutoTokenizer.from_pretrained(model_name)
 
 conversation_history = []
 
-while True:
+def respond_to_prompt(input_text):
     history_string = '\n'.join(conversation_history)
-
-    input_text = input('> ')
-
     inputs = tokenizer.encode_plus(history_string, input_text, return_tensors='pt')
-    # print(inputs)
-
-    # print(tokenizer.pretrained_vocab_files_map)
 
     outputs = model.generate(**inputs)
-    # print(outputs)
-
     response = tokenizer.decode(outputs[0], skip_special_tokens=True).strip()
-    print(response)
-
     conversation_history.append(input_text)
     conversation_history.append(response)
-    # print(conversation_history)
+
+    return response
+
+
+if __name__ == '__main__':
+    while True:
+        input_text = input('> ')
+
+        response = respond_to_prompt(input_text)
+        print(response)
