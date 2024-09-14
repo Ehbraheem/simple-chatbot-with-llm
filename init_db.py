@@ -13,7 +13,8 @@ with open('schema.sql') as f:
 
 cursor = connection.cursor()
 
-cursor.execute('SELECT count(*) from users')
+print(cursor.execute('SELECT count(*) from users').fetchall())
+print(cursor.execute('SELECT count(*) from chats').fetchall())
 
 connection.close()
 
