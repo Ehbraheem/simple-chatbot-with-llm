@@ -3,7 +3,7 @@ import json
 from flask import Flask, request
 from flask_cors import CORS
 
-from chatbot import respond_to_prompt
+from bot import respond_to_prompt
 
 app = Flask(__name__)
 CORS(app)
