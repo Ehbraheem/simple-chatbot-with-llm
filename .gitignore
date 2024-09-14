@@ -1,3 +1,7 @@
 my_env
 .theia
 __pycache__
+__*/
+DS*
+DS*/
+.DS_*
