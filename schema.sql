@@ -1,0 +1,23 @@
+-- DROP TABLE IF EXISTS users;
+-- DROP TABLE IF EXISTS chats;
+-- DROP INDEX IF EXISTS idx_users_phone;
+
+CREATE TABLE IF NOT EXISTS users (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    phone TEXT NOT NULL,
+    name TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS chats (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    prompt TEXT NOT NULL,
+    response TEXT NOT NULL--,
+    -- user_id INTEGER NOT NULL,
+    -- FOREIGN KEY (user_id)
+    --     REFERENCES users (id)
+    --         ON DELETE NO ACTION    
+);
+
+CREATE UNIQUE INDEX IF NOT EXISTS idx_users_phone ON users (phone);
